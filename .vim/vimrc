@@ -1,0 +1,152 @@
+set nocompatible
+source $VIMRUNTIME/defaults.vim
+autocmd FileType text setlocal textwidth=80
+
+" The ! means the package won't be loaded right away but when plugins are
+" loaded during initialization.
+if has('syntax') && has('eval')
+  packadd! matchit
+endif
+
+" MANAGE PLUGINS
+" vim-plug as plugin manager 
+call plug#begin()
+" Initialize plugin system
+call plug#end()
+
+syntax on
+colorscheme slate
+highlight Comment ctermfg=DarkGreen
+filetype plugin indent on
+set history=10000
+set tabstop=4
+" Set how many columns of whitespace a level of indentation
+" is worth.
+set shiftwidth=4
+" Set how many columns of whitespace a tab is worth.
+set softtabstop=4
+" Tab will be expanded into spaces.
+set expandtab
+" When shifting lines, round the indentation to the nearest multiple
+" of shiftwidth.
+set shiftround
+" New lines inherit the indentation of previous lines.
+set autoindent
+set number
+" Do backup before writing a file.
+set nobackup
+set writebackup
+" Allow unsaved background buffers and remember marks/undo for them.
+set hidden
+set showmatch
+set incsearch
+" Highlight search pattern.
+set hlsearch
+" Make searches case-sensitive only if they contain upper-case characters.
+set ignorecase smartcase
+set switchbuf=useopen
+" Keep more context when scrolling off the end of a buffer.
+set scrolloff=3
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
+" Display incomplete commands.
+set showcmd
+" Complete longest common string, then list alternatives. 
+set wildmode=longest,list
+" Display all matching files when we tab complete.
+set wildmenu
+" Completion options.
+"   menu: use a popup menu
+"   preview: show more info in menu
+:set completeopt=menu,preview
+let mapleader=","
+" If a file is changed outside of vim, automatically reload it without asking.
+set autoread
+" Diffs are shown side-by-side not above/below.
+set diffopt=vertical
+" Never show the sign column.
+set signcolumn=no
+" Write swap files to disk more frequently and trigger CursorHold event faster (default is
+" after 4000 ms of inactivity).
+:set updatetime=3000
+" Always show tab bar at the top.
+set showtabline=2
+" Always show a status line.
+:set laststatus=2
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" Highlight current line.
+set cursorline
+set cmdheight=1
+" Fix slow O inserts.
+:set timeout timeoutlen=1000 ttimeoutlen=100
+" Insert only one space when joining lines that contain sentence-terminating
+" punctuation like `.`.
+set nojoinspaces
+
+" MAPPINGS
+" Previous buffer.
+nnoremap <Leader>3 :b#<CR>
+" Next buffer
+nnoremap <Leader>n :bn<CR>
+" Close buffer.
+nnoremap Q :bd!<CR>
+map <leader>y "+y
+map <leader>Y "+Y
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" For alternate file. <leader><leader> is more convenient than <c-^>
+nnoremap <leader><leader> <c-^>
+" Close all other splits aka. windows.
+nnoremap <leader>o :only<cr>
+" Move updown by visual (wrapped) lines.
+noremap j gj
+noremap k gk
+" Bubble single lines
+" nmap <C-Up> :m .-2<CR>
+" Bubble single line up.
+nmap <leader>r :m .-2<CR>
+" Bubble single line down.
+nmap <leader>t :m  .+1<CR>
+" Bubble multiple lines up.
+vnoremap <silent> <leader>r  @='"zxk"zP`[V`]'<CR>
+" Bubble multiple lines down.
+vnoremap <silent> <leader>t  @='"zx"zp`[V`]'<CR>
+" Unhighlight search.
+nnoremap <silent> <Leader><Space> :nohlsearch<CR>
+" Toggle show whitespace.
+noremap <Leader>ws :set list!<CR>
+" Make me a sandwich.
+" :w!! to save with sudo
+ca w!! w !sudo tee >/dev/null "%"
+" edit config file
+command! Edrc edit $MYVIMRC
+" List buffers.
+nnoremap <Leader>g :ls<CR>
+" To use . command in visual mode as well.
+vnoremap . :norm.<CR>
+
+" To jump to marks with ` on german keyboard layout.
+nmap à `a
+nmap Á 'A
+nmap À `A
+nmap ç 'c
+nmap Ç 'C
+nmap é 'e
+nmap è `e
+nmap É 'E
+nmap È `E
+nmap í 'i
+nmap ì `i
+nmap Í 'I
+nmap Ì `I
+nmap ó 'o
+nmap ò `o
+nmap Ó 'O
+nmap Ò `O
+nmap ú 'u
+nmap ù `u
+nmap Ú 'U
+nmap Ù `U
