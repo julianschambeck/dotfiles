@@ -1,5 +1,5 @@
-set nocompatible
 source $VIMRUNTIME/defaults.vim
+set nocompatible
 autocmd FileType text setlocal textwidth=80
 
 " The ! means the package won't be loaded right away but when plugins are
@@ -20,10 +20,10 @@ highlight Comment ctermfg=DarkGreen
 filetype plugin indent on
 set history=10000
 set tabstop=4
-" Set how many columns of whitespace a level of indentation
+" How many columns of whitespace a level of indentation
 " is worth.
 set shiftwidth=4
-" Set how many columns of whitespace a tab is worth.
+" How many columns of whitespace a tab is worth.
 set softtabstop=4
 " Tab will be expanded into spaces.
 set expandtab
@@ -33,14 +33,13 @@ set shiftround
 " New lines inherit the indentation of previous lines.
 set autoindent
 set number
-" Do backup before writing a file.
+" Only do backup before writing a file.
 set nobackup
 set writebackup
 " Allow unsaved background buffers and remember marks/undo for them.
 set hidden
 set showmatch
 set incsearch
-" Highlight search pattern.
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters.
 set ignorecase smartcase
@@ -83,29 +82,44 @@ set cmdheight=1
 " punctuation like `.`.
 set nojoinspaces
 
-" MAPPINGS
-" Previous buffer.
-nnoremap <Leader>3 :b#<CR>
-" Next buffer
-nnoremap <Leader>n :bn<CR>
-" Close buffer.
-nnoremap Q :bd!<CR>
-map <leader>y "+y
-map <leader>Y "+Y
+" KEY MAPPINGS
+nnoremap <leader>q :q!<cr>
+nnoremap <leader>w :w<cr>
+" Make me a sandwich.
+" :w!! to save with sudo
+ca w!! w !sudo tee >/dev/null "%"
+" Edit vimrc file.
+" Usage is :Edrc
+command! Edrc edit $MYVIMRC
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+" Buffers
 " For alternate file. <leader><leader> is more convenient than <c-^>
 nnoremap <leader><leader> <c-^>
+" List buffers.
+nnoremap <Leader>f :ls<CR>
+" Previous buffer.
+nnoremap ä :bprev<CR>
+" Next buffer
+nnoremap ö :bnext<CR>
+" Close current buffer.
+nnoremap Q :bd!<CR>
+
+" Yanking
+" Yank visually selected text into the system clipboard.
+vmap Y "+y
+" Yank to clipboard.
+nnoremap <leader>y "+y
+" Yank whole line to clipboard. 
+nnoremap <leader>Y "+Y
 " Close all other splits aka. windows.
-nnoremap <leader>o :only<cr>
+nnoremap <Space>o :only<cr>
 " Move updown by visual (wrapped) lines.
 noremap j gj
 noremap k gk
-" Bubble single lines
-" nmap <C-Up> :m .-2<CR>
 " Bubble single line up.
 nmap <leader>r :m .-2<CR>
 " Bubble single line down.
@@ -118,16 +132,28 @@ vnoremap <silent> <leader>t  @='"zx"zp`[V`]'<CR>
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 " Toggle show whitespace.
 noremap <Leader>ws :set list!<CR>
-" Make me a sandwich.
-" :w!! to save with sudo
-ca w!! w !sudo tee >/dev/null "%"
-" edit config file
-command! Edrc edit $MYVIMRC
-" List buffers.
-nnoremap <Leader>g :ls<CR>
 " To use . command in visual mode as well.
 vnoremap . :norm.<CR>
-
+" Change word under cursor and type new word. Use . to replace next
+" occurence of the same word equally.
+nnoremap cö /\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgn
+nnoremap cä ?\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgN
+" Analogue to above.
+nnoremap dö /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgn
+nnoremap dä ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgN
+" Paste what has been previously yanked.
+nnoremap <leader>p "0p
+" Cd into the directory of the current buffer.
+nnoremap <leader>cd :cd %:p:h<CR>
+" Easier to type on my keyboard layout.
+nnoremap <Space>h <<
+nnoremap <Space>l >>
+" Easily indent and deindendt visually selected blocks.
+vnoremap <Space>h <gv
+vnoremap <Space>l >gv
+" Indent/dedent what you just pasted
+nnoremap öh V`]<
+nnoremap öl V`]>
 " To jump to marks with ` on german keyboard layout.
 nmap à `a
 nmap Á 'A
