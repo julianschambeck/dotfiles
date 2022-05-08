@@ -8,8 +8,8 @@
 [color]
 	ui = auto
 [user]
-	name = authorName
-	email = theEmail
+	name = "Julian Schambeck"
+	email = 45296090+julianschambeck@users.noreply.github.com
 [alias]
     # Minimalistic status output.
 	st = status -sb
@@ -45,8 +45,6 @@
     unstage = rm --cache --
     # Undo last commit.
     undo =reset --soft HEAD^
-    # Show commit count of each author.
-    who = shortlog -s --
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
     add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
     # Show commit count for a branch.

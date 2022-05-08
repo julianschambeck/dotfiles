@@ -91,6 +91,7 @@ ca w!! w !sudo tee >/dev/null "%"
 " Edit vimrc file.
 " Usage is :Edrc
 command! Edrc edit $MYVIMRC
+command! Sorc source $MYVIMRC
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -151,9 +152,11 @@ nnoremap <Space>l >>
 " Easily indent and deindendt visually selected blocks.
 vnoremap <Space>h <gv
 vnoremap <Space>l >gv
-" Indent/dedent what you just pasted
-nnoremap öh V`]<
-nnoremap öl V`]>
+" Indent/dedent what you just pasted.
+nnoremap <leader>h V`]<
+nnoremap <leader>l V`]>
+" Jump to tag under the cursor.
+nnoremap <space>j <c-]>
 " To jump to marks with ` on german keyboard layout.
 nmap à `a
 nmap Á 'A

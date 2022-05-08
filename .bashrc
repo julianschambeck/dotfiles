@@ -38,7 +38,8 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | eg
 alias gh='history | grep'
 
 # Cd to the top level directory of a git project.
-alias cg='cd `git rev-parse --show-toplevel`'
+# mnemonic: git root
+alias gr='cd `git rev-parse --show-toplevel`'
 
 alias grep='grep --color=auto'
 
@@ -47,7 +48,7 @@ alias j='jobs -l'
 alias df='df -H'
 
 # Backup untracked files in a git repo.
-alias bakut='git ls-files --others --exclude-standard -z |\
+alias backuput='git ls-files --others --exclude-standard -z |\
 xargs -0 tar rvf ~/backup-untracked.zip'
 # Search for something in a git repo.
 # Usage: gs 'import'
