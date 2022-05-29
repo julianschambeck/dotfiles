@@ -11,11 +11,20 @@ endif
 " MANAGE PLUGINS
 " vim-plug as plugin manager 
 call plug#begin()
+" Colorschemes
+Plug 'vim-scripts/wombat256.vim'
+Plug 'yorickpeterse/happy_hacking.vim'
+Plug 'zacanger/angr.vim'
+Plug 'chriskempson/base16-vim'
 " Initialize plugin system
 call plug#end()
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 syntax on
-colorscheme slate
 highlight Comment ctermfg=DarkGreen
 filetype plugin indent on
 set history=10000
@@ -39,6 +48,8 @@ set writebackup
 " Allow unsaved background buffers and remember marks/undo for them.
 set hidden
 set showmatch
+" Set maxmempattern 
+set mmp=5000
 set incsearch
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters.
@@ -179,3 +190,13 @@ nmap ú 'u
 nmap ù `u
 nmap Ú 'U
 nmap Ù `U
+
+" Really autoload external changes to a file.
+if ! exists("g:CheckUpdateStarted")
+    let g:CheckUpdateStarted=1
+    call timer_start(1,'CheckUpdate')
+endif
+function! CheckUpdate(timer)
+    silent! checktime
+    call timer_start(1000,'CheckUpdate')
+endfunction
