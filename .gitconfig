@@ -21,8 +21,6 @@
 	rv = remote -v
     # Show logs line by line.
 	ll = log --oneline
-    # Different look for logs.
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     # Show last commit.
 	last = log -1 HEAD --stat
     # Show new commits since last fetch.
@@ -40,13 +38,12 @@
     ## Show names and number of lines changed of changed files.
     diffstat = diff --stat -r
     # Show git config specific to user.
-	usercfg = config --global -l
+	usrcfg = config --global -l
     # Unstage files.
     unstage = rm --cache --
     # Undo last commit.
     undo =reset --soft HEAD^
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
     add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
-    # Show commit count for a branch.
-    # Usage: git cc <branch>
-    cc = rev-list --count
+[init]
+	defaultBranch = main
