@@ -1,49 +1,30 @@
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [branch]
-	autosetuprebase = never
+    autosetuprebase = never
 [color]
-	ui = auto
+    ui = auto
 [user]
-	name = "Julian Schambeck"
-	email = 45296090+julianschambeck@users.noreply.github.com
+    name = "Name"
+    email = "Mail"
 [alias]
-    # Minimalistic status output.
-	st = status -sb
+    st = status
     br = branch
     co = checkout
     ci = commit
-	cm = commit -m
+    cm = commit -m
     # Show remotes of the local repo.
-	rv = remote -v
-    # Show logs line by line.
-	ll = log --oneline
-    # Show last commit.
-	last = log -1 HEAD --stat
-    # Show new commits since last fetch.
-    lc = log ORIG_HEAD.. --stat --no-merges
+    rv = remote -v
     # Show changes relative to the current index (staging area for the next
     # commit).
-	df = diff
+    df = diff
     # Show changes staged for the next commit relative to the named commit.
     # Default is to compare to last commit (HEAD).
     dc = diff --cached
-    # Show the diff in VIM
-	dv = difftool -t vimdiff -y
-    # Show names and status of changed files.
-    changes = diff --name-status -r
-    ## Show names and number of lines changed of changed files.
-    diffstat = diff --stat -r
     # Show git config specific to user.
-	usrcfg = config --global -l
-    # Unstage files.
-    unstage = rm --cache --
-    # Undo last commit.
-    undo =reset --soft HEAD^
-    edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
-    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+    usrcfg = config --global -l
 [init]
-	defaultBranch = main
+    defaultBranch = main
