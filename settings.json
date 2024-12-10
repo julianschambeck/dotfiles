@@ -1,0 +1,76 @@
+{
+  // To improve performance",
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  // VIM
+  "vim.handleKeys": {
+    "<C-p>": false
+  },
+  "vim.overrideCopy": true,
+  "vim.useSystemClipboard": false,
+  "vim.gdefault": true,
+  "vim.leader": "<Space>", 
+  "vim.shell": "/usr/bin/bash",
+  "vim.hlsearch": true,
+  "vim.mouseSelectionGoesIntoVisualMode": true,
+  "vim.smartcase": true,
+  "vim.textwidth": 80,
+  "vim.camelCaseMotion.enable": true,
+  "vim.highlightedyank.enable": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-e>"],
+      "after": ["3", "<C-e>"]
+    },
+    {
+      "before": ["<C-y>"],
+      "after": ["3", "<C-y>"]
+    },
+  ],
+  "telemetry.telemetryLevel": "off",
+  "git.openRepositoryInParentFolders": "never",
+  "explorer.confirmDelete": false,
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Hermit,'JetBrains Mono'",
+  "editor.mouseWheelZoom": true,
+  "editor.wordWrap": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.fontLigatures": false,
+  "editor.tabCompletion": "on",
+  "files.exclude": {
+    "**/*.swp": true
+  },
+  "terminal.integrated.fontFamily": "'JetBrains Mono'",
+  "terminal.integrated.fontSize": 13,
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.scopeSelection": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[cds]": {
+    "editor.defaultFormatter": "SAPSE.vscode-cds"
+  },
+  "cds.typeGenerator.outputPath": "./srv/models/",
+  "cds.typeGenerator.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "workbench.startupEditor": "none",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "window.zoomLevel": -0.5,
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.rulers": [
+    150
+  ],
+  "editor.cursorBlinking": "smooth",
+}

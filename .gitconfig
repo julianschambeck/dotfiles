@@ -1,0 +1,33 @@
+[alias]
+    st = status
+    co = checkout
+    cm = commit -m
+    sk = stash --keep-index
+    ds = diff --stat=160,120
+    di = diff --cached
+    # aa = add --all
+    # ff = merge --ff-only
+[init]
+    defaultBranch = main
+[color]
+    ui = auto
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore_global
+[merge]
+    tool = vimdiff
+[user]
+    name = Julian Schambeck
+[color "diff"]
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+[color "status"]
+    branch = magenta bold
+    changed = red bold
+    added = green bold
+    unmerged = cyan bold
+
+[push]
+	autoSetupRemote = true
