@@ -11,18 +11,15 @@ set -o vi
 bind '"\C-f": forward-search-history'
 
 export PYTHONSTARTUP=~/.pythonrc.py
+export prf="/Users/<USER>/.bash_profile"
+export rc="/Users/<USER>/.vim/vimrc"
 
 alias vi='vim'
 alias l='ls -CF'
 alias la='ls -lhFA'
 alias ll='ls -lhF'
 alias grep='grep --color=auto'
-
-alias so='source $PRF'
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+alias so='source $prf'
 
 findg() {
   find . -iname "*$1*" -type f "${@:2}"
@@ -38,10 +35,3 @@ cfsk () {
     fi
 }
 
-# cds completion start
-CDS_PROFILE=$(cds completion --shell bash --profile 2> /dev/null) || CDS_PROFILE=""
-if [ -r "$CDS_PROFILE" ]; then
-    . "$CDS_PROFILE"
-fi
-
-# cds completion end

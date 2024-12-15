@@ -5,10 +5,8 @@
     sk = stash --keep-index
     ds = diff --stat=160,120
     di = diff --cached
-    # aa = add --all
-    # ff = merge --ff-only
 [init]
-    defaultBranch = main
+    defaultBranch = master
 [color]
     ui = auto
 [core]
@@ -28,6 +26,5 @@
     changed = red bold
     added = green bold
     unmerged = cyan bold
-
 [push]
 	autoSetupRemote = true
